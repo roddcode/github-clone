@@ -12,18 +12,12 @@ function App() {
   const { user, setUser, search, setSearch, repos, setRepos, followers, setFollowers, forks, setForks, following, setFollowing, tab, setTab } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${search}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer`,
-      },
-    })
+    fetch(`https://api.github.com/users/${search}`)
       .then((response) => response.json())
       .then((data) => {
         setUser(data);
       });
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${search}/repos`)
@@ -31,7 +25,7 @@ function App() {
       .then((data) => {
         setRepos(data);
       });
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${search}/following`)
@@ -39,7 +33,7 @@ function App() {
       .then((data) => {
         setFollowing(data);
       });
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${search}/followers`)
@@ -47,19 +41,19 @@ function App() {
       .then((data) => {
         setFollowers(data);
       });
-  }, []);
+  }, [search]);
 
   return (
     <>
-      <Navbar setSearch={setSearch} />
+      <Navbar />
       <main className='p-4 flex flex-col gap-8 md:flex-row'>
         <ProfileSidebar user={user} />
         <div className='w-full overflow-y-auto max-h-[540px] scrollbar-hide'>
           <div className='overflow-y-auto'>
             <nav className='w-full grid grid-flow-col gap-2 text-center'>
               <span
-                className={`py-2 hover:border-b-cyan-500 border-transparent border-b-4 ${
-                  tab === 'repos' && 'border-b-cyan-500'
+                className={`py-2 hover:border-b-blue-800 dark:hover:border-b-cyan-500 border-transparent border-b-4 ${
+                  tab === 'repos' && 'border-b-blue-800 dark:border-b-cyan-500'
                 }`}
                 onClick={() => {
                   setTab('repos');
@@ -67,24 +61,24 @@ function App() {
               >
                 Repositories
               </span>
-              <span className={`py-2 hover:border-b-cyan-500 border-transparent border-b-4 ${
-                  tab === 'forked' && 'border-b-cyan-500'
+              <span className={`py-2 hover:border-b-blue-800 dark:hover:border-b-cyan-500 border-transparent border-b-4 ${
+                  tab === 'forked' && 'border-b-blue-800 dark:border-b-cyan-500'
                 }`}
                 onClick={() => {
                   setTab('forked');
                 }}>
                 Forked
               </span>
-              <span className={`py-2 hover:border-b-cyan-500 border-transparent border-b-4 ${
-                  tab === 'followers' && 'border-b-cyan-500'
+              <span className={`py-2 hover:border-b-blue-800 dark:hover:border-b-cyan-500 border-transparent border-b-4 ${
+                  tab === 'followers' && 'border-b-blue-800 dark:border-b-cyan-500'
                 }`}
                 onClick={() => {
                   setTab('followers');
                 }}>
                 Followers
               </span>
-              <span className={`py-2 hover:border-b-cyan-500 border-transparent border-b-4 ${
-                  tab === 'following' && 'border-b-cyan-500'
+              <span className={`py-2 hover:border-b-blue-800 dark:hover:border-b-cyan-500 border-transparent border-b-4 ${
+                  tab === 'following' && 'border-b-blue-800 dark:border-b-cyan-500'
                 }`}
                 onClick={() => {
                   setTab('following');

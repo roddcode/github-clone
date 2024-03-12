@@ -7,6 +7,7 @@ const ProfileSidebar = ({ user }: { user: GitHubUser }) => {
         <img
           src={user.avatar_url}
           alt=''
+          width="200" height="200"
           className='rounded-full w-[200px] h-[200px]'
         />
       </div>
@@ -15,7 +16,7 @@ const ProfileSidebar = ({ user }: { user: GitHubUser }) => {
         <h4 id='name' className='text-2xl font-semibold'>
           {user.name}
         </h4>
-        <h5 id='login' className='text-cyan-500'>
+        <h5 id='login' className='text-blue-800 dark:text-cyan-500'>
           {user.login}
         </h5>
         <p id='bio' className='pb-2 font-light'>
@@ -23,7 +24,7 @@ const ProfileSidebar = ({ user }: { user: GitHubUser }) => {
         </p>
         <a
           href={`https://github.com/${user.login}`}
-          className='bg-cyan-500 text-slate-50 px-4 py-2 rounded text-center flex justify-center items-center gap-2'
+          className='bg-blue-800 dark:bg-cyan-500 text-slate-50 px-4 py-2 rounded text-center flex justify-center items-center gap-2'
         >
           <span className="material-symbols-outlined">open_in_new</span>
           See on Github

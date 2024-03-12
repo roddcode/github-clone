@@ -23,7 +23,7 @@ const Darkmode = () => {
   return (
     <div className='darkmode-toggle h-full'>
       <button onClick={toggleMode}>
-        <span className='material-symbols-outlined p-[9px] rounded-full bg-slate-500'>
+        <span className='material-symbols-outlined p-[9px] rounded-full bg-neutral-300 dark:bg-slate-500'>
           {isDarkMode === 'dark' ? 'dark_mode' : 'light_mode'}
         </span>
       </button>

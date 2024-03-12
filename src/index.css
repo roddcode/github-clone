@@ -21,14 +21,27 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1f2937; 
-  border-radius: 6px; 
+  background-color: #e5e7eb;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #64748b; 
+  background-color: #d4d4d4;
 }
 
 ::-webkit-scrollbar-thumb:active {
+  background-color: #d4d4d4;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: #1f2937;
+  border-radius: 6px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}
+
+html.dark ::-webkit-scrollbar-thumb:active {
   background-color: #64748b;
 }
